@@ -1,14 +1,27 @@
-import types from '../actions/types';
+import types from "../actions/types";
 
-const DEFAULT_STATEMENT = {
-    list: []
-}
-
-export default function(state= DEFAULT_STATEMENT, action){
-    switch (action.types) {
-  
-    
-        default:
-            return state;
+const DEFAULT_STATE = {
+  list: [
+    {
+      title: "todo list everyday",
+      details: "building it with scottdemy"
+    },
+    {
+      title: "eat",
+      details: "chairs"
+    },
+    {
+      title: "seven days til you die",
+      details: "yup"
     }
+  ]
+};
+
+export default function(state = DEFAULT_STATE, action) {
+  switch (action.type) {
+      case types.ADD_ITEM:
+      return {list: [action.payload, ...state.list]};
+    default:
+      return state;
+  }
 }
