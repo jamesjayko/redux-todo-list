@@ -65,8 +65,8 @@ function validate(value) {
   const errors = {};
   if (!value.title) errors.title = "Please enter a title";
   if (!value.details) errors.details = "Please enter a detail";
-  if (!value.username) errors.username = "Please enter a username";
-  if (!value.password) errors.password = "Please enter a password";
+  // if (!value.username) errors.username = "Please enter a username";
+  // if (!value.password) errors.password = "Please enter a password";
 
   return errors;
 }
