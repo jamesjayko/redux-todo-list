@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
-import {addItem }from '../actions';
+import { addItem } from "../actions";
 
 class AddForm extends Component {
   renderInput({ label, input, meta: { touched, error } }) {
@@ -18,8 +18,9 @@ class AddForm extends Component {
 
   handleAddItem(value) {
     console.log("form submitted with: ", value);
-    this.props.addItem(value);
-    this.props.history.push('/');
+    this.props.addItem(value).then(() => {
+      this.props.history.push("/");
+    });
   }
 
   render() {
@@ -36,11 +37,25 @@ class AddForm extends Component {
           <div className="form-group" />
           <Field name="title" label="Title" component={this.renderInput} />
           <Field name="details" label="Details" component={this.renderInput} />
-          <Field name="username" label="Username" component={this.renderInput} />
-          <Field name="password" label="Password" component={this.renderInput} />
-          
+          <Field
+            name="username"
+            label="Username"
+            component={this.renderInput}
+          />
+          <Field
+            name="password"
+            label="Password"
+            component={this.renderInput}
+          />
+
           <button className="btn btn-outline-success">Add Item</button>
-          <button onClick={this.props.reset} type="button" className="btn btn-outline-danger ml-3">Reset Form</button>
+          <button
+            onClick={this.props.reset}
+            type="button"
+            className="btn btn-outline-danger ml-3"
+          >
+            Reset Form
+          </button>
         </form>
       </div>
     );
@@ -52,7 +67,7 @@ function validate(value) {
   if (!value.details) errors.details = "Please enter a detail";
   if (!value.username) errors.username = "Please enter a username";
   if (!value.password) errors.password = "Please enter a password";
-  
+
   return errors;
 }
 
@@ -61,4 +76,4 @@ AddForm = reduxForm({
   validate: validate
 })(AddForm);
 
-export default connect(null, {addItem})(AddForm);
+export default connect(null, { addItem })(AddForm);
