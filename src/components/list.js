@@ -9,7 +9,7 @@ class List extends Component {
     this.props.getItems();
   }
   render() {
-    console.log('List component PROPS: ', this.props);
+    // console.log('List component PROPS: ', this.props);
     const listItems = this.props.list.map((item, index) => {
       return (
      <ListItem key={index} {...item}/>

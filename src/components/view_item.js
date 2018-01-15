@@ -19,6 +19,12 @@ class ViewItem extends Component {
           </Link>
         </div>
         <h1 className="text-center">View Item: {this.props.single.title}</h1>
+        <div className="pretty p-default">
+          <input type="checkbox" />
+          <div className="state p-success">
+            <label>Completed</label>
+          </div>
+        </div>
       </div>
     );
   }

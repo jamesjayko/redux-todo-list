@@ -30,5 +30,14 @@ export function getSingleItem(id){
 
 }
 
+export function deleteItem(id) {
+  const request = axios.delete(BASE_URL + '/todos/' + id + API_KEY); 
+
+  return {
+    type: types.DELETE_ITEM,
+    payload: request
+  }
+}
+
 // axios.delete = http://api.prototypes.com/todos/:id#/?key=api key
 // toggle complete the item and when time it was completed.
